@@ -9,10 +9,16 @@ import {
 import Messages from '../components/Messages';
 import messages from '../data/messages.json';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
+import { useState } from 'react';
 
 const ChatScreen = () => {
+  const [newMessage, setNewMessage] = useState<string>('');
+  const onSend = (): void => {
+    console.warn('Sending a new massages!', newMessage);
+    setNewMessage('')
+  };
   return (
-    <KeyboardAvoidingView
+    <KeyboardAvoidingView 
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1"
     >
@@ -32,9 +38,10 @@ const ChatScreen = () => {
           <TextInput
             placeholder="Message"
             className="bg-white p-3 m-3 rounded-full flex-1"
+            value={newMessage} onChangeText={setNewMessage}
           />
           <View className="bg-sky-500 items-center justify-center w-10 h-10 rounded-full overflow-hidden ">
-            <MaterialIcons name="send" size={24} color="white" />
+            <MaterialIcons name="send" size={24} color="white" onPress={onSend} />
           </View>
         </View>
       </ImageBackground>

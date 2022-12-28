@@ -7,7 +7,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 
 const Messages: React.FC<{ messages: IMessages }> = ({ messages }) => {
-  const isMe = () => {
+  const isMe = (): Boolean => {
     return messages.user.id === 'u1';
   };
 

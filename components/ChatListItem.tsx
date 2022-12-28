@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { IChats } from '../type/IChats';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -10,9 +11,19 @@ type ChatType = {
   chat: IChats;
 };
 
+type NavigationType = {
+  Chat: string;
+  navigate: (Chat: string) => void;
+};
+
 const ChatListItem: React.FC<ChatType> = ({ chat }) => {
+  const navigation = useNavigation<NavigationType>();
+
   return (
-    <View className="flex flex-row mx-4 my-2 h-[70px] mb-5 ">
+    <Pressable
+      onPress={() => navigation.navigate('Chat')}
+      className="flex flex-row mx-4 my-2 h-[70px] mb-5 "
+    >
       <Image
         source={{
           uri: chat.user.image,
@@ -33,7 +44,7 @@ const ChatListItem: React.FC<ChatType> = ({ chat }) => {
           {chat.lastMessage.text}
         </Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
