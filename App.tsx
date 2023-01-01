@@ -1,16 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
-import ChatsScreen from './screens/ChatsScreen';
-import ChatScreen from './screens/ChatScreen';
+import { SafeAreaView, View } from 'react-native';
 import Navigator from './navigation/Navigator';
-
 
 const App = () => {
   return (
-    <View className="flex-1 justify-center py-14">
+    <SafeAreaView className="flex-1 justify-center bg-gray-50">
       <Navigator />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 };
 

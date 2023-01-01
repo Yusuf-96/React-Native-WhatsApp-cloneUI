@@ -3,12 +3,12 @@ import React from 'react';
 import ChatListItem from '../components/ChatListItem';
 import chats from '../data/chats.json';
 
-
-const ChatsScreen= () => {
+const ChatsScreen = () => {
   return (
     <FlatList
       data={chats}
       renderItem={({ item }) => <ChatListItem chat={item} />}
+      className=" bg-white" 
     />
   );
 };

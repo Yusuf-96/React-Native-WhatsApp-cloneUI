@@ -13,7 +13,7 @@ type ChatType = {
 
 type NavigationType = {
   Chat: string;
-  navigate: (Chat: string) => void;
+  navigate: (Chat: string, {}) => void;
 };
 
 const ChatListItem: React.FC<ChatType> = ({ chat }) => {
@@ -21,7 +21,9 @@ const ChatListItem: React.FC<ChatType> = ({ chat }) => {
 
   return (
     <Pressable
-      onPress={() => navigation.navigate('Chat')}
+      onPress={() =>
+        navigation.navigate('Chat', { id: chat.id, name: chat.user.name  })
+      }
       className="flex flex-row mx-4 my-2 h-[70px] mb-5 "
     >
       <Image
